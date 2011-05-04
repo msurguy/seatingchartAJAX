@@ -1,0 +1,4 @@
+<% if logged_in? %>
+  <% form_remote_tag(:controller => "backchannels", :action => "create") do %>
+    <%= label_tag(:message, "Post a message for everyone") %><br />
+    <%= text_area_tag(:message, nil, :size=>

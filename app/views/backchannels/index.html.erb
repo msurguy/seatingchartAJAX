@@ -1,0 +1,16 @@
+<% title "Backchannels" %>
+<div id="backchannels">
+  <%= render @backchannels %>
+ </div>
+
+<% if logged_in? %>
+  <%= form_for Backchannel.new, :remote => true do |f| %>
+    <p>Current User : <%= current_user.username %></p>
+    <p>
+     <%= f.label :msg %><br />
+     <%= f.text_area :msg %>
+     <%= f.hidden_field :name, { :value => current_user.username } %>
+     </p>
+     <p><%= f.submit "Add Message" %></p>
+   <% end %>
+ <% end %>

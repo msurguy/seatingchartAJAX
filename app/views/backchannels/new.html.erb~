@@ -1,0 +1,17 @@
+<% if logged_in? %>
+<% title "New Backchannel" %>
+
+<%= form_for @backchannel do |f| %>
+  <% @backchannel.name = current_user.username %>
+  <p>
+    <%= f.label :msg %><br />
+    <%= f.text_area :msg %>
+  </p>
+  <p><%= f.submit %></p>
+<% end %>
+
+
+<p><%= link_to "Back to List", backchannels_path %></p>
+<% else %>
+  <p>Please log in to post a backchannel message!</p>
+<% end %>

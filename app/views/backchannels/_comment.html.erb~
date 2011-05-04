@@ -1,0 +1,9 @@
+<% title "Backchannels" %>
+<div id="backchannels">
+  <% for backchannel in @backchannels %>
+    <div class="backchannel" data-time="<%= backchannel.created_at.to_i %>">
+      <p><%= backchannel.name %> : <%= backchannel.msg %> on <%= backchannel.created_at.strftime('%b %d, %Y at %I:%M %p') %></p>
+    </div>
+  <% end %>
+  </div>
+<p><%= link_to "New Backchannel", new_backchannel_path %></p>
