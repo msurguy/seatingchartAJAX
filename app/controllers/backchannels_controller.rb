@@ -17,4 +17,5 @@ class BackchannelsController < ApplicationController
       format.js
     end
   end
+
 end

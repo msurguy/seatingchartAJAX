@@ -10,7 +10,7 @@ class BackchannelsController < ApplicationController
   end
 
   def create
-    @backchannel = Backchannel.create!(:name => current_user.username, params[:backchannel])
+    @backchannel = Backchannel.create!(params[:backchannel])
     flash[:notice] = "Comment successfully submitted!"
     respond_to do |format|
       format.html {redirect_to backchannels_url }

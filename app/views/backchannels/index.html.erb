@@ -1,4 +1,44 @@
-<% title "Backchannels" %>
+<% title "Classroom Seating" %>
+
+<table border cellspacing=4 width="100%">
+  <br /><br /> Front of the class<br />
+  <% for i in 1..5 %>
+    <tr>
+      <% for j in 1..9 %>
+        <td height="50px">
+          <% student = User.where(:row => i, :column => j).first %>
+          <% if j==5 %>
+            BLANK CELL
+          <% else %>
+            <% if !student.blank? %>
+                <% if logged_in? %>
+                  <% if student.row == i && student.column == j %>
+                    <% if student.row == current_user.row && student.column == current_user.column %>
+                      <b class="current"><%= student.username %></b>
+                    <% else %>
+                      <%= student.username %>
+                    <% end %>
+                  <% end %>
+                <% else %>
+                  <%= student.username %><br />
+                <% end %>
+              <% else %>
+                <% if logged_in? %>
+                <%= link_to "Vacant", :controller => :users, :action => :seat, :row => i, :column => j %> <br />
+              <% else %>
+                Vacant<br/>
+              <% end %>
+              <% end %>
+            <% end %>
+        </td>
+      <% end %>
+    </tr>
+  <% end %>
+</table>
+<% if logged_in? %>
+  <%= link_to "Remove from class", :controller => :users, :action => :seat, :row => 20, :column => 20 %> <br />
+<% end %><br />
+<h2>Backchannel:  </h2>
 <div id="backchannels">
   <%= render @backchannels %>
  </div>
@@ -8,7 +48,7 @@
     <p>Current User : <%= current_user.username %></p>
     <p>
      <%= f.label :msg %><br />
-     <%= f.text_area :msg %>
+     <%= f.text_area :msg, :rows => 4, :cols => 60 %>
      <%= f.hidden_field :name, { :value => current_user.username } %>
      </p>
      <p><%= f.submit "Add Message" %></p>

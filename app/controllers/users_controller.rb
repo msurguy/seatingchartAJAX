@@ -7,6 +7,8 @@ class UsersController < ApplicationController
 
   def create
     @user = User.new(params[:user])
+    @user.row = 20
+    @user.column = 20
     if @user.save
       session[:user_id] = @user.id
       redirect_to root_url, :notice => "Thank you for signing up! You are now logged in."
@@ -19,6 +21,13 @@ class UsersController < ApplicationController
     @user = current_user
   end
 
+  def seat
+    @user = current_user
+    @user.update_attribute(:row, params[:row])
+    @user.update_attribute(:column, params[:column])
+    redirect_to root_url, :notice => "Your seat has been updated"
+  end
+  
   def update
     @user = current_user
     if @user.update_attributes(params[:user])

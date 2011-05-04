@@ -12,7 +12,7 @@ Seater::Application.routes.draw do
   resources :users
 
   resources :backchannels
-  root :to => "home#index"
+  root :to => "backchannels#index"
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
