@@ -1,0 +1,1 @@
+$("signin").after('<div id="flash_notice"><%= escape_javasctipt(flash.delete(:notice)) %></div>');

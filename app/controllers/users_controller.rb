@@ -25,9 +25,20 @@ class UsersController < ApplicationController
     @user = current_user
     @user.update_attribute(:row, params[:row])
     @user.update_attribute(:column, params[:column])
-    redirect_to root_url, :notice => "Your seat has been updated"
+    redirect_to root_url, :notice => "Your seat has been updated, new row:"+@user.row.to_s + ", new column:"+@user.column.to_s
   end
-  
+ 
+  def seatjs
+    @user = current_user
+    @user.update_attribute(:row, params[:row])
+    @user.update_attribute(:column, params[:column])
+    flash[:notice] = "Your seat has been updated, new row: "+@user.row.to_s+" new column: " + @user.column.to_s
+    respond_to do |format|
+      format.html { redirect_to root_url }
+      format.js
+    end
+  end
+
   def update
     @user = current_user
     if @user.update_attributes(params[:user])

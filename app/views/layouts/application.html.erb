@@ -13,8 +13,11 @@
       <% flash.each do |name, msg| %>
         <%= content_tag :div, msg, :id => "flash_#{name}" %>
       <% end %>
+      <div id="classroom">
       <%= content_tag :h1, yield(:title) if show_title? %>
       <%= yield %>
+      </div>
+      <div id="footer">Classroom Seating web app by Cesar Acosta and Maksim Surguy. May 2011</div>
     </div>
-  </body>
+ </body>
 </html>

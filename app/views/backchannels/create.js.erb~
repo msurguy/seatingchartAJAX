@@ -1,1 +1,2 @@
-$("#backchannels").append("<%= raw escape_javascript(render(@backchannel)) %>");
+$("#backchannels").prepend("<%= raw escape_javascript(render(@backchannel)) %>");
+$("#new-backchannel")[0].reset();

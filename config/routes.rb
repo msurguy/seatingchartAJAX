@@ -1,6 +1,7 @@
 Seater::Application.routes.draw do
   match 'user/edit' => 'users#edit', :as => :edit_current_user
   match 'users/seat' => 'users#seat'
+  match 'users/seatjs' => 'users#seatjs'
   match 'signup' => 'users#new', :as => :signup
 
   match 'logout' => 'sessions#destroy', :as => :logout

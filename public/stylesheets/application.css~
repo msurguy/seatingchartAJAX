@@ -73,3 +73,5 @@ a {
 .error_messages ul {
   margin: 0;
 }
+
+table { text-align: center; }

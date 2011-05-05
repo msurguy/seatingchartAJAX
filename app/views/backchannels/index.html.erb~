@@ -1,14 +1,14 @@
-<% title "Classroom Seating" %>
+<% title "Classroom Seating by Cesar and Maks" %>
 
 <table border cellspacing=4 width="100%">
-  <br /><br /> Front of the class<br />
+  <p style="text-align: center; font-size: 16px;"> Front of the class</p><br />
   <% for i in 1..5 %>
     <tr>
       <% for j in 1..9 %>
         <td height="50px">
           <% student = User.where(:row => i, :column => j).first %>
           <% if j==5 %>
-            BLANK CELL
+            PATHWAY
           <% else %>
             <% if !student.blank? %>
                 <% if logged_in? %>
@@ -24,9 +24,9 @@
                 <% end %>
               <% else %>
                 <% if logged_in? %>
-                <%= link_to "Vacant", :controller => :users, :action => :seat, :row => i, :column => j %> <br />
+                  <%= link_to "Vacant", {:controller => :users, :action => :seatjs, :row => i, :column => j}, :remote => true %>
               <% else %>
-                Vacant<br/>
+                <span style="color: #008800; font-weight: bold;"> Vacant<span /><br/>
               <% end %>
               <% end %>
             <% end %>
@@ -35,9 +35,11 @@
     </tr>
   <% end %>
 </table>
-                <% if logged_in? %>
-                <%= link_to "Remove from class", :controller => :users, :action => :seat, :row => 20, :column => 20 %> <br />
-              <% end %><br />
+<br />
+<% if logged_in? %>
+  <%= link_to "Remove from class", :controller => :users, :action => :seat, :row => 20, :column => 20, :remote => true %> <br />
+<% end %><br />
+<h2>Backchannel:  </h2>
 <div id="backchannels">
   <%= render @backchannels %>
  </div>
