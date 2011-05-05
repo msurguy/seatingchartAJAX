@@ -1,7 +1,7 @@
 class BackchannelsController < ApplicationController
   def index
     #@backchannels = Backchannel.all(:order => "created_at DESC")
-    @backchannels = Backchannel.where("created_at > ?", Time.at(params[:after].to_i + 1)).find(:all, :order => "created_at DESC")
+    @backchannels = Backchannel.where("created_at > ?", Time.at(params[:after].to_i + 1)).find(:all, :order => "created_at DESC", :conditions =>["created_at > ?", 180.minutes.ago])
     @backchannel = Backchannel.new
   end
 
