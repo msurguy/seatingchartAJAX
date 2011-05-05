@@ -77,4 +77,7 @@ a {
 .current {
   font-weight:bold;
 }
+.active {
+background-color: #00FFFF;
+}
 table { text-align: center; }

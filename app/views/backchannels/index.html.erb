@@ -1,7 +1,7 @@
 <% title "Classroom Seating by Cesar and Maks" %>
 
+<p style="text-align: center; font-size: 16px;"> Front of the class</p><br />
 <table border cellspacing=4 width="100%">
-  <p style="text-align: center; font-size: 16px;"> Front of the class</p><br />
   <% for i in 1..5 %>
     <tr>
       <% for j in 1..9 %>
@@ -24,7 +24,7 @@
                 <% end %>
               <% else %>
                 <% if logged_in? %>
-                  <%= link_to "Vacant", {:controller => :users, :action => :seatjs, :row => i, :column => j}, :remote => true %>
+                  <%= link_to "Vacant", {:controller => :users, :action => :seatjs, :row => i, :column => j}, :remote => true, :class => "vacant" %>
               <% else %>
                 <span style="color: #008800; font-weight: bold;"> Vacant<span /><br/>
               <% end %>

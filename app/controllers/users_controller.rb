@@ -30,6 +30,7 @@ class UsersController < ApplicationController
  
   def seatjs
     @user = current_user
+    @id = current_user.username
     @user.update_attribute(:row, params[:row])
     @user.update_attribute(:column, params[:column])
     flash[:notice] = "Your seat has been updated, new row: "+@user.row.to_s+" new column: " + @user.column.to_s

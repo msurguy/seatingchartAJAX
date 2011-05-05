@@ -6,8 +6,12 @@ $(function() {
 });
 
 function updateBackchannels() {
-
-  var after = $(".backchannel:first-child").attr("data-time");
+//  for ( var i=0; i <= ($("#backchannels").length); i++){
+//    var nm = $("#backchannels .backchannel").find("span").text();
+//    $("#backchannels").prepend(nm);
+//    $("table tr td:contains('user1')").css("background-color", "#00ffff");
+//  }
+    var after = $(".backchannel:first-child").attr("data-time");
   $.getScript("/backchannels.js?&after=" + after)
     setTimeout(updateBackchannels, 10000);
 }

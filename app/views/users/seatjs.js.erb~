@@ -1,3 +1,7 @@
 $("#flash_notice").remove()
 $("#classroom").before('<div id="flash_notice"><%= escape_javascript(flash.delete(:notice)) %></div>');
+var currrow = $("table tr td:contains('<%= @id %>')").index();
+var currcol = $("table tr:contains('<%= @id %>')").index();
 $("table tr td span").removeClass("current");
+$("table tr td span").replaceWith("<a href='/users/seatjs?column="+(currcol+1)+"&amp;row="+(currrow+1)+"' data-remote='true'>Vacant</a>");
+$("table tr:nth-child(<%= @user.row %>) td:nth-child(<%= @user.column %>)").eq(0).eq(0).replaceWith("<span class='current'><%= @id %></span>");
