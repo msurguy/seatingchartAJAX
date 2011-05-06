@@ -1,7 +1,7 @@
 <% title "Classroom Seating by Cesar and Maks" %>
 
+<p style="text-align: center; font-size: 16px;"> Front of the class</p><br />
 <table border cellspacing=4 width="100%">
-  <p style="text-align: center; font-size: 16px;"> Front of the class</p><br />
   <% for i in 1..5 %>
     <tr>
       <% for j in 1..9 %>
@@ -14,13 +14,13 @@
                 <% if logged_in? %>
                   <% if student.row == i && student.column == j %>
                     <% if student.row == current_user.row && student.column == current_user.column %>
-                      <span class="current"><%= student.username %></span>
+                      <span class="name"><%= student.username %></span>
                     <% else %>
-                      <%= student.username %>
+                      <span class="taken"><%= student.username %></span>
                     <% end %>
                   <% end %>
                 <% else %>
-                  <%= student.username %><br />
+                  <span class="taken"><%= student.username %></span><br />
                 <% end %>
               <% else %>
                 <% if logged_in? %>
@@ -37,9 +37,11 @@
 </table>
 <br />
 <% if logged_in? %>
-  <%= link_to "Remove from class", :controller => :users, :action => :seat, :row => 20, :column => 20, :remote => true %> <br />
+  <%= link_to "Remove from class", {:controller => :users, :action => :seat, :row => 20, :column => 20} , :remote => true %> <br />
 <% end %><br />
-<h2>Backchannel:  </h2>
+<h3>Currently Assigned:</h3>
+<div id="userstatus"></div>
+<h2>Backchannel (last 3 hours):  </h2>
 <div id="backchannels">
   <%= render @backchannels %>
  </div>

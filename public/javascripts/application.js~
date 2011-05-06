@@ -6,13 +6,30 @@ $(function() {
 });
 
 function updateBackchannels() {
-  for ( var i=0; i <= ($("#backchannels").length); i++){
-    var nm = $("#backchannels .backchannel").find("span").text();
-    $("#backchannels").prepend(nm);
-    $("table tr td:contains('user1')").css("background-color", "#00ffff");
+//  for ( var i=0; i <= ($("#backchannels").length); i++){
+//    var nm = $("#backchannels .backchannel").find("span").text();
+//    $("#backchannels").prepend(nm);
+//    $("table tr td:contains('user1')").css("background-color", "#00ffff");
+//  }
+//
+  var users = $("#backchannels div p .name").get();
+  for (var i = 0; i < users.length; i++){
+    users[i] = $(users[i]).text();
+    $("table").append(users[i]);
+    $("table").append("test");
   }
-    var after = $(".backchannel:first-child").attr("data-time");
-  $.getScript("/backchannels.js?&after=" + after)
+
+  $("table td .taken").each(function(index){
+      for (var j=0; j<users.length; j++){
+        if ($(this).text() == users[j]){
+           $(this).parent().addClass('onchat');
+        }
+      }
+  });
+  
+  var after = $(".backchannel:first-child").attr("data-time");
+    $.getScript("/users.js");
+    $.getScript("/backchannels.js?&after=" + after)
     setTimeout(updateBackchannels, 10000);
 }
 

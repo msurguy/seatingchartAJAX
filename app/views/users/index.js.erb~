@@ -1,0 +1,3 @@
+$("#userstatus").append("<div id='statuses'></div>");
+$("#userstatus #statuses").replaceWith("<%= raw escape_javascript(render(@users)) %>");
+

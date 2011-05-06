@@ -11,8 +11,23 @@ function updateBackchannels() {
 //    $("#backchannels").prepend(nm);
 //    $("table tr td:contains('user1')").css("background-color", "#00ffff");
 //  }
-    var after = $(".backchannel:first-child").attr("data-time");
-  $.getScript("/backchannels.js?&after=" + after)
+//
+  var users = $("#backchannels div p .name").get();
+  for (var i = 0; i < users.length; i++){
+    users[i] = $(users[i]).text();
+  }
+
+  $("table td .taken").each(function(index){
+      for (var j=0; j<users.length; j++){
+        if ($(this).text() == users[j]){
+           $(this).parent().addClass('onchat');
+        }
+      }
+  });
+  
+  var after = $(".backchannel:first-child").attr("data-time");
+    $.getScript("/users.js");
+    $.getScript("/backchannels.js?&after=" + after)
     setTimeout(updateBackchannels, 10000);
 }
 

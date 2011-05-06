@@ -74,10 +74,11 @@ a {
   margin: 0;
 }
 
-.current {
+.current, .name {
   font-weight:bold;
 }
-.active {
+
+.active, .onchat {
 background-color: #00FFFF;
 }
 table { text-align: center; }

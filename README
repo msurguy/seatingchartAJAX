@@ -8,14 +8,16 @@ Log in with the new user
 To take an available seat in the classroom, just click on any Vacant seat.
 To send a chat message to everyone in the class, type in a message under "Backchannel" and hit "Add Message"
 
+The messages are filtered to be shown for only the past three hours but all of the messages are saved in a database (in case the teacher wants to check the conversation later)
+
+
 To remove the current student from the class (to not take up any seats) click "Remove from class"
 
-This Rails app uses gem "nifty_generators" for authentication and scaffolding templates
-to install the gem do the following command:
+This Rails app uses gem "nifty_generators" for authentication and scaffolding templates (this beautiful gem is from Railscasts.com author Ryan Bates )
+to install the nifty_generators gem do the following command:
 sudo gem install nifty_generators
 
 we check if the user is logged in by simple check :
   "if logged_in?" 
 and the current user's details are available : current_user.username ,etc
-
 
